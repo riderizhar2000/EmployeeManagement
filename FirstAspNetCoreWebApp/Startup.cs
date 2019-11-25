@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using System.Diagnostics;
 using Microsoft.Extensions.Configuration;
+using FirstAspNetCoreWebApp.Interfaces;
+using FirstAspNetCoreWebApp.Repositories;
 
 namespace FirstAspNetCoreWebApp
 {
@@ -24,6 +26,8 @@ namespace FirstAspNetCoreWebApp
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc().AddXmlSerializerFormatters();
+            services.AddSingleton<IEmployeeRepository, EmployeeRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,9 +38,12 @@ namespace FirstAspNetCoreWebApp
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
+            app.UseMvcWithDefaultRoute();
+
             app.Run(async (context) =>
             {                
-                await context.Response.WriteAsync(_config["MyKey"]);
+                await context.Response.WriteAsync("Hello World");
             });
         }
     }
