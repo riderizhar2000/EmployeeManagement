@@ -8,10 +8,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using System.Diagnostics;
 using Microsoft.Extensions.Configuration;
-using FirstAspNetCoreWebApp.Interfaces;
-using FirstAspNetCoreWebApp.Repositories;
+using EmployeeManagement.Interfaces;
+using EmployeeManagement.Repositories;
 
-namespace FirstAspNetCoreWebApp
+namespace EmployeeManagement
 {
     public class Startup
     {

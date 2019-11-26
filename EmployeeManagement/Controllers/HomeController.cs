@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using FirstAspNetCoreWebApp.Interfaces;
-using FirstAspNetCoreWebApp.Models;
+using EmployeeManagement.Interfaces;
+using EmployeeManagement.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FirstAspNetCoreWebApp.Controllers
+namespace EmployeeManagement.Controllers
 {
     public class HomeController : Controller
     {

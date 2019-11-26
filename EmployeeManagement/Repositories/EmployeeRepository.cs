@@ -1,11 +1,11 @@
-﻿using FirstAspNetCoreWebApp.Interfaces;
-using FirstAspNetCoreWebApp.Models;
+﻿using EmployeeManagement.Interfaces;
+using EmployeeManagement.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FirstAspNetCoreWebApp.Repositories
+namespace EmployeeManagement.Repositories
 {
     public class EmployeeRepository : IEmployeeRepository
     {

@@ -6,7 +6,17 @@
     <h3>@ViewData["Title"]</h3>
 
     @{
-        var employee = ViewData["Employee"] as 
+        var employee = ViewData["Employee"] as EmployeeManagement.Models.Employee;
     }
+
+    <div>
+        Name: @employee.Name
+    </div>
+    <div>
+        Email: @employee.Email
+    </div>
+    <div>
+        Department: @employee.Department
+    </div>
 </body>
 </html>
