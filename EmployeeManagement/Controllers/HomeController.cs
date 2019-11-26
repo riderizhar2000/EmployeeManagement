@@ -25,7 +25,9 @@ namespace FirstAspNetCoreWebApp.Controllers
         public ViewResult Details(int id = 1)
         {
             Employee employee = _employeeRepository.GetEmployee(id);
-            return View(employee);
+            ViewData["Employee"] = employee;
+            ViewData["Title"] = "Employee Details";
+            return View();
         }
     }
 }
