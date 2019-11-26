@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EmployeeManagement.Interfaces;
 using EmployeeManagement.Models;
+using EmployeeManagement.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeManagement.Controllers
@@ -24,9 +25,13 @@ namespace EmployeeManagement.Controllers
 
         public ViewResult Details(int id = 1)
         {
-            Employee employee = _employeeRepository.GetEmployee(id);            
-            ViewBag.Title = "Employee Details";
-            return View(employee);
+            HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
+            {
+                Employee = _employeeRepository.GetEmployee(id),
+                Title = "Employee Details"
+            };
+                        
+            return View(homeDetailsViewModel);
         }
     }
 }
