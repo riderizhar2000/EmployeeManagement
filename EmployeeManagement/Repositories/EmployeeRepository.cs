@@ -15,9 +15,9 @@ namespace EmployeeManagement.Repositories
         {
             _employeeList = new List<Employee>()
             {
-                new Employee() {Id = 1, Name = "John", Email = "john@abc.com", Department = "HR"},
-                new Employee() {Id = 2, Name = "Sam", Email = "sam@abc.com", Department = "IT"},
-                new Employee() {Id = 3, Name = "mary", Email = "mary@abc.com", Department = "HR"}
+                new Employee() {Id = 1, Name = "John", Email = "john@abc.com", Department = Dept.HR},
+                new Employee() {Id = 2, Name = "Sam", Email = "sam@abc.com", Department = Dept.IT},
+                new Employee() {Id = 3, Name = "mary", Email = "mary@abc.com", Department = Dept.Finance}
             };
         }
 
