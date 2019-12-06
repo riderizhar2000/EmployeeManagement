@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20191206175630_AddPhotoPathColumn.cs" />
+    <Compile Remove="Migrations\20191206175630_AddPhotoPathColumn.Designer.cs" />
+    <Compile Remove="Migrations\20191206180519_AddPhotoPathColumn.cs" />
+    <Compile Remove="Migrations\20191206180519_AddPhotoPathColumn.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="wwwroot\img\noimage_old.jpg" />
   </ItemGroup>
 
