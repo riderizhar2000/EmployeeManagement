@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace EmployeeManagement.Repositories
 {
-    public class EmployeeRepository : IEmployeeRepository
+    public class MockEmployeeRepository : IEmployeeRepository
     {
         private List<Employee> _employeeList;
 
-        public EmployeeRepository()
+        public MockEmployeeRepository()
         {
             _employeeList = new List<Employee>()
             {
@@ -28,6 +28,16 @@ namespace EmployeeManagement.Repositories
             return employee;
         }
 
+        public Employee Delete(int id)
+        {
+            Employee employee = _employeeList.FirstOrDefault(e => e.Id == id);
+            if (employee != null)
+            {
+                _employeeList.Remove(employee);
+            }
+            return employee;
+        }
+
         public IEnumerable<Employee> GetAllEmployees()
         {
             return _employeeList;
@@ -36,6 +46,16 @@ namespace EmployeeManagement.Repositories
         public Employee GetEmployee(int id)
         {
             return _employeeList.FirstOrDefault(e => e.Id == id);
+        }
+
+        public Employee Update(Employee modifiedEmployee)
+        {
+            Employee employee = _employeeList.FirstOrDefault(e => e.Id == modifiedEmployee.Id);
+            if (employee != null)
+            {
+                employee = modifiedEmployee;
+            }
+            return employee;
         }
     }
 }

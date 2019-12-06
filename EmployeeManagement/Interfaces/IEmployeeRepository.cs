@@ -13,5 +13,9 @@ namespace EmployeeManagement.Interfaces
         IEnumerable<Employee> GetAllEmployees();
 
         Employee Add(Employee employee);
+
+        Employee Update(Employee modifiedEmployee);
+
+        Employee Delete(int id);
     }
 }

@@ -30,7 +30,7 @@ namespace EmployeeManagement
         {
             services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(_config.GetConnectionString("TestDB")));
             services.AddMvc().AddXmlSerializerFormatters();
-            services.AddTransient<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IEmployeeRepository, SqlEmployeeRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
