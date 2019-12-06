@@ -10,6 +10,8 @@ using System.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using EmployeeManagement.Interfaces;
 using EmployeeManagement.Repositories;
+using EmployeeManagement.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeManagement
 {
@@ -26,6 +28,7 @@ namespace EmployeeManagement
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(_config.GetConnectionString("TestDB")));
             services.AddMvc().AddXmlSerializerFormatters();
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
         }
