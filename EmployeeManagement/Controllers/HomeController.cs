@@ -22,12 +22,14 @@ namespace EmployeeManagement.Controllers
             this.hostingEnvironment = hostingEnvironment;
         }
 
+        [HttpGet]
         public ViewResult Index()
         {
             var employees = _employeeRepository.GetAllEmployees();
             return View(employees);
         }
       
+        [HttpGet]
         public ViewResult Details(int id = 1)
         {
             HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
@@ -56,7 +58,11 @@ namespace EmployeeManagement.Controllers
                     string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "img");
                     uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Image.FileName;
                     string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                    model.Image.CopyTo(new FileStream(filePath, FileMode.Create));
+                    if (model.Image.Length > 0)
+                    {
+                        var fileStream = new FileStream(filePath, FileMode.Create);
+                        model.Image.CopyToAsync(fileStream);
+                    }                    
                 }
                 Employee newEmployee = new Employee()
                 {
@@ -70,6 +76,21 @@ namespace EmployeeManagement.Controllers
             }
 
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            Employee employee = _employeeRepository.GetEmployee(id);
+            EmployeeEditViewModel employeeEditViewModel = new EmployeeEditViewModel()
+            {
+                Id = employee.Id,
+                Name = employee.Name,
+                Email = employee.Email,
+                Department = employee.Department,
+                ExistingImagePath = employee.ImagePath
+            };
+            return View(employeeEditViewModel);
         }
     }
 }
