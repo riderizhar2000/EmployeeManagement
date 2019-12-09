@@ -59,7 +59,7 @@
                     var fileName = $(this).val().split("\\").pop();
                     console.log("fileName: " + fileName);
                     console.log($(this));
-                    $(this).next('.custom-file-label').html = fileName;
+                    $(this).next('.custom-file-label').html(fileName);
                 })
             });
         </script>
