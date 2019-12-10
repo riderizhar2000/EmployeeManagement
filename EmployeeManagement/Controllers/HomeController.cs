@@ -33,6 +33,8 @@ namespace EmployeeManagement.Controllers
         [HttpGet]
         public ViewResult Details(int? id)
         {
+            throw new Exception("Exception in Details View");
+
             Employee employee = _employeeRepository.GetEmployee(id.Value);
             if (employee == null)
             {
