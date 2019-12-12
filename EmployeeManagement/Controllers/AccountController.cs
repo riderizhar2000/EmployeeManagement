@@ -53,6 +53,28 @@ namespace EmployeeManagement.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        public IActionResult LogIn()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> LogIn(LoginViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                ModelState.AddModelError("", "Invalid Login Attempt");               
+            }
+            
+            return View(model);
+        }
+
         [HttpPost]
         public async Task<IActionResult> LogOut()
         {
